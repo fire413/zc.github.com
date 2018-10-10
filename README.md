@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+# 天气预报软件说明书 #
 
-You can use the [editor on GitHub](https://github.com/fire413/zc.github.com/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+ ## 项目介绍 ##
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+> 摘要：本设计使用Android设计技术开发了一种运用在Android系统上的手机天气预报软件，通过该软件可选择地区来获得天气，温度等信息。
+> 功能介绍：
+1. 遍历全国省市县数据
+2. 显示天气信息
+3. 手动切换城市
+4. 后台自动更新天气
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/fire413/zc.github.com/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## 我的模块 ##
+### 遍历全国省市县数据 ###
+将从服务器获取的全国省市县数据存储到本地。建立3张表：province、city、county，分别用于存放省、市、县的数据信息。获取并解析和处理全国所有的省市县数据，并且编写界面将数据显示出来。
+通过与服务器的交互获得全国所有省市县的数据，调用sendOkHttpRequest()方法，传入请求地址，注册一个回调来处理服务器响应。通过Utility类中的handleProvinceResponse()，handleCityResponse()，handleCountyResponse()方法来解析和处理数据，再组装成实体类对象，再调用save()将数据存储到数据库当中。通过ChooseAreaFragment类中的onCreateView()方法获取一些控件的实例，然后初始化ArrayAdapter，设置为ListView的适配器。接着在onActivityCreated()方法中给ListView和Button设置点击事件。
